@@ -1,0 +1,33 @@
+{
+    "user": {
+        "url": null,
+        "id": null,
+        "external_id": null,
+        "name": "Anonymous user",
+        "alias": null,
+        "created_at": null,
+        "updated_at": null,
+        "active": true,
+        "verified": false,
+        "shared": false,
+        "locale_id": null,
+        "locale": "en-US",
+        "time_zone": "Pacific Time (US & Canada)",
+        "last_login_at": null,
+        "email": "invalid@example.com",
+        "phone": null,
+        "signature": null,
+        "details": null,
+        "notes": null,
+        "organization_id": null,
+        "role": "end-user",
+        "custom_role_id": null,
+        "moderator": false,
+        "ticket_restriction": null,
+        "only_private_comments": false,
+        "tags": [],
+        "suspended": false,
+        "photo": null,
+        "authenticity_token": "OoiEE0BhDanZaH6LsWCd9xWBTwfVg090ipqKLeCacKg="
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "user": {
+        "url": "https://my.zendesk.com/api/v2/users/35436.json",
+        "id": 35436,
+        "external_id": "sai989sur98w9",
+        "name": "Johnny Agent",
+        "alias": "Mr. Johnny",
+        "created_at": "2009-07-20T22:55:29Z",
+        "updated_at": "2011-05-05T10:38:52Z",
+        "active": true,
+        "verified": true,
+        "shared": false,
+        "locale_id": 1,
+        "locale": "en-US",
+        "time_zone": "Pacific Time (US & Canada)",
+        "last_login_at": "2011-05-05T10:38:52Z",
+        "email": "john@example.com",
+        "phone": "555-123-4567",
+        "signature": "Have a nice day, Johnny",
+        "details": "",
+        "notes": "Johnny is a nice guy!",
+        "organization_id": 57542,
+        "role": "agent",
+        "custom_role_id": 9373643,
+        "moderator": true,
+        "ticket_restriction": "assigned",
+        "only_private_comments": false,
+        "tags": ["enterprise", "other_tag"],
+        "suspended": false,
+        "photo": {
+            "id": 928374,
+            "name": "my_funny_profile_pic.png",
+            "content_url": "https://my.zendesk.com/photos/my_funny_profile_pic.png",
+            "content_type": "image/png",
+            "size": 166144,
+            "thumbnails": [{
+                "id": 928375,
+                "name": "my_funny_profile_pic_thumb.png",
+                "content_url": "https://my.zendesk.com/photos/my_funny_profile_pic_thumb.png",
+                "content_type": "image/png",
+                "size": 58298
+            }]
+        },
+        "authenticity_token": "YPVLYV0ebkk33hYOzylaVXyQZZv1M5+kC4CN17sti4c="
+    }
+}
