@@ -26,15 +26,20 @@ module OmniAuth
       extra { { raw_info: identity } }
       
       def request_phase
-        return callback_phase if site && username && password
-        OmniAuth::Form.build(
-          title: (options[:title] || "Zendesk Authentication"),
-          url: callback_path
-        ) do |f|
-          f.text_field 'Username', options.params.username
-          f.password_field 'Password', options.params.password
-          f.text_field 'Zendesk Site', options.params.site
-        end.to_response
+        if site && username && password
+          r = Rack::Response.new
+          r.redirect(callback_path, 307)
+          r.finish
+        else
+          OmniAuth::Form.build(
+            title: (options[:title] || "Zendesk Authentication"),
+            url: callback_path
+          ) do |f|
+            f.text_field 'Username', options.params.username
+            f.password_field 'Password', options.params.password
+            f.text_field 'Zendesk Site', options.params.site
+          end.to_response
+        end
       end
       
       def callback_phase
@@ -68,9 +73,7 @@ module OmniAuth
       def uri?(uri)
         uri = URI.parse(uri)
         uri.scheme == 'https'
-      rescue URI::BadURIError
-        false
-      rescue URI::InvalidURIError
+      rescue
         false
       end
       

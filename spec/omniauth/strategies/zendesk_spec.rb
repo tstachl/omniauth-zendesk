@@ -39,7 +39,7 @@ describe OmniAuth::Strategies::Zendesk do
       end
 
       it 'should populate the auth hash' do
-        auth_hash.should be_kind_of(Hash)
+        last_response.headers["Location"].should == '/auth/zendesk/callback'
       end
     end
   end
@@ -70,10 +70,15 @@ describe OmniAuth::Strategies::Zendesk do
         OmniAuth.config.on_failure = lambda{|env| [401, {}, [env['omniauth.error.type'].inspect]]}
         stub_request(:get, "https://wrong%40example.com:login@my.zendesk.com/api/v2/users/me").
           to_return(status: 200, body: File.new(File.dirname(__FILE__) + '/../../fixtures/anonymous.json'), headers: {content_type: "application/json; charset=utf-8"})
-        post '/auth/zendesk/callback', email: 'wrong@example.com', password: 'login', site: 'my'
       end
-    
+      
       it 'should fail with :invalid_credentials' do
+        post '/auth/zendesk/callback', email: 'wrong@example.com', password: 'login', site: 'my'
+        last_response.body.should == ':invalid_credentials'
+      end
+      
+      it 'should fail if no/wrong site provided' do
+        post '/auth/zendesk/callback', email: 'wrong@example.com', password: 'login'
         last_response.body.should == ':invalid_credentials'
       end
     end
