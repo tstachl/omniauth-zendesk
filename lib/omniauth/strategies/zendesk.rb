@@ -26,6 +26,7 @@ module OmniAuth
       extra { { raw_info: identity } }
       
       def request_phase
+        return callback_phase if site && username && password
         OmniAuth::Form.build(
           title: (options[:title] || "Zendesk Authentication"),
           url: callback_path

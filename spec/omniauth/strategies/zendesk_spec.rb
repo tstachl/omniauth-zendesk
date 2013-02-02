@@ -30,6 +30,18 @@ describe OmniAuth::Strategies::Zendesk do
       get '/auth/zendesk'
       last_response.body.should be_include("<form")
     end
+
+    context 'with valid credentials' do
+      before do
+        stub_request(:get, "https://john%40example.com:awesome@my.zendesk.com/api/v2/users/me").
+          to_return(status: 200, body: File.new(File.dirname(__FILE__) + '/../../fixtures/me.json'), headers: {content_type: "application/json; charset=utf-8"})
+        post '/auth/zendesk', email: 'john@example.com', password: 'awesome', site: 'my'
+      end
+
+      it 'should populate the auth hash' do
+        auth_hash.should be_kind_of(Hash)
+      end
+    end
   end
   
   describe '#callback_phase' do
